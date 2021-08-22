@@ -11,12 +11,11 @@ public class Application {
                 System.out.println("Index of coincidence. Pass file name as args (T1 to T7)");
             } else {
                 String fileName = args[0];
-                Core c = new Core();
                 byte[] textBytes = Files.readAllBytes(Path.of("src/main/resources/" + fileName + ".txt"));
-                double index = c.computeIndexOfCoincidence(textBytes);
+                double index = Core.computeIndexOfCoincidence(textBytes);
                 System.out.println("Index of coincidence for file " + fileName + ": " + index);
             }
-        } catch (IOException e) {
+        } catch (Exception e) {
             System.err.println("Unable to process file.");
             System.err.println(e.getCause().getMessage());
         }
