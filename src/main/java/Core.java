@@ -9,10 +9,7 @@ public class Core {
         long textSize = textBytes.length;
         for (byte b : textBytes) {
             char letter = (char) b;
-            if (charOccurrences.containsKey(letter))
-                charOccurrences.put(letter, charOccurrences.get(letter) + 1);
-            else
-                charOccurrences.put(letter, 1L);
+            charOccurrences.merge(letter, 1L, Long::sum);
         }
         charOccurrences.remove('\n');
         return charOccurrences.entrySet().stream()
